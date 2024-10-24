@@ -3,6 +3,7 @@
 namespace Pyz\Zed\Antelope\Business;
 
 use Pyz\Zed\Antelope\Business\Reader\AntelopeReader;
+use Pyz\Zed\Antelope\Business\Writer\AntelopeLocationWriter;
 use Pyz\Zed\Antelope\Business\Writer\AntelopeWriter;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
@@ -15,6 +16,13 @@ class AntelopeBusinessFactory extends AbstractBusinessFactory
     public function createAntelopeWriter(): AntelopeWriter
     {
         return new AntelopeWriter(
+            $this->getEntityManager()
+        );
+    }
+
+    public function createAntelopeLocationWriter(): AntelopeLocationWriter
+    {
+        return new AntelopeLocationWriter(
             $this->getEntityManager()
         );
     }
