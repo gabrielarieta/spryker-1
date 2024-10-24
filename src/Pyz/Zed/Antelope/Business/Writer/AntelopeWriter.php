@@ -16,6 +16,6 @@ class AntelopeWriter
 
     public function create(AntelopeTransfer $antelopeTransfer): AntelopeTransfer
     {
-        return $this->antelopeEntityManager->createAntelope($antelopeTransfer);
+        return $this->antelopeEntityManager->createOrUpdateAntelope($antelopeTransfer);
     }
 }

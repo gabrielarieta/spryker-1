@@ -2,13 +2,11 @@
 
 namespace Pyz\Zed\Antelope\Persistence;
 
-use Generated\Shared\Transfer\AntelopeLocationCriteriaTransfer;
+use Generated\Shared\Transfer\AntelopeLocationTransfer;
 use Generated\Shared\Transfer\AntelopeTransfer;
-use Generated\Shared\Transfer\PyzAntelopeLocationEntityTransfer;
 use Orm\Zed\Antelope\Persistence\PyzAntelope;
 use Orm\Zed\AntelopeLocation\Persistence\PyzAntelopeLocation;
 use Propel\Runtime\Exception\PropelException;
-use Pyz\Zed\Antelope\Persistence\AntelopeEntityManagerInterface;
 use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 
 class AntelopeEntityManager extends AbstractEntityManager implements AntelopeEntityManagerInterface
@@ -28,7 +26,7 @@ class AntelopeEntityManager extends AbstractEntityManager implements AntelopeEnt
     /**
      * @throws PropelException
      */
-    public function createOrUpdateAntelopeLocation(AntelopeLocationCriteriaTransfer $antelopeLocationTransfer): AntelopeLocationCriteriaTransfer
+    public function createOrUpdateAntelopeLocation(AntelopeLocationTransfer $antelopeLocationTransfer): AntelopeLocationTransfer
     {
         $antelopeLocationEntity = new PyzAntelopeLocation();
         $antelopeLocationEntity->fromArray($antelopeLocationTransfer->modifiedToArray());
