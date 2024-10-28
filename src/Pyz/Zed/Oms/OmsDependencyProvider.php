@@ -7,6 +7,9 @@
 
 namespace Pyz\Zed\Oms;
 
+use Pyz\Zed\Oms\Communication\Plugin\Command\CustomOrderProcess\AuthorizePaymentCommand;
+use Pyz\Zed\Oms\Communication\Plugin\Command\CustomOrderProcess\IsPaymentAuthorizedCondition;
+use Pyz\Zed\Oms\Communication\Plugin\Command\CustomOrderProcess\ShipOrderCommand;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\Oms\AvailabilityReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandPlugin;
@@ -92,6 +95,8 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     protected function extendCommandPlugins(Container $container): Container
     {
         $container->extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
+            $commandCollection->add(new ShipOrderCommand(), 'CustomOrderProcess/ShipOrder');
+            $commandCollection->add(new AuthorizePaymentCommand(), 'CustomOrderProcess/AuthorizePayment');
             $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
             $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
             $commandCollection->add(new ShipGiftCardByEmailCommandPlugin(), 'GiftCardMailConnector/ShipGiftCard');
@@ -120,6 +125,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     protected function extendConditionPlugins(Container $container): Container
     {
         $container->extend(self::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
+            $conditionCollection->add(new IsPaymentAuthorizedCondition(), 'CustomOrderProcess/IsPaymentAuthorized');
             $conditionCollection->add(new IsGiftCardConditionPlugin(), 'GiftCard/IsGiftCard');
             $conditionCollection->add(new IsPickingListGenerationFinishedConditionPlugin(), 'PickingList/isPickingListGenerationFinished');
             $conditionCollection->add(new IsPickingStartedConditionPlugin(), 'PickingList/isPickingStarted');
