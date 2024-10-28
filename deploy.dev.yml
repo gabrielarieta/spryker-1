@@ -6,9 +6,6 @@ tag: 'dev'
 environment: docker.dev
 image:
     tag: spryker/php:8.2
-    php:
-        enabled-extensions:
-            - blackfire
     environment:
         #AOP
         SPRYKER_AOP_INFRASTRUCTURE: '{

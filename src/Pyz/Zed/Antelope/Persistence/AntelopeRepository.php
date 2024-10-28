@@ -6,7 +6,6 @@ use Generated\Shared\Transfer\AntelopeCriteriaTransfer;
 use Generated\Shared\Transfer\AntelopeLocationCriteriaTransfer;
 use Generated\Shared\Transfer\AntelopeLocationTransfer;
 use Generated\Shared\Transfer\AntelopeTransfer;
-use Generated\Shared\Transfer\PyzAntelopeLocationEntityTransfer;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 use Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException;
 
